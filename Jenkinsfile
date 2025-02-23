@@ -1,8 +1,6 @@
 pipeline {
     agent any
-    tools {
-        jfrog 'jfrog-cli'
-    }
+   
     environment {
         AWS_REGION = 'us-east-1' 
     }
@@ -27,9 +25,12 @@ pipeline {
         }
 
         stage('Testing') {
+            withEnv(["JFROG_BINARY_PATH=${tool 'jfrog-cli'}"]) {
+            // The 'jf' tool is available in this scope.
+            }
             steps {
                 // Show the installed version of JFrog CLI.
-                jf '-v'
+                jf '-v' 
 
                 // Show the configured JFrog Platform instances.
                 jf 'c show'
