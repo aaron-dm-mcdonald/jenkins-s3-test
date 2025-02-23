@@ -25,9 +25,9 @@ pipeline {
         }
 
         stage('Testing') {
-            withEnv(["JFROG_BINARY_PATH=${tool 'jfrog-cli'}"]) {
-            // The 'jf' tool is available in this scope.
-            }
+            // withEnv(["JFROG_BINARY_PATH=${tool 'jfrog-cli'}"]) {
+            // // The 'jf' tool is available in this scope.
+            // }
             steps {
                 // Show the installed version of JFrog CLI.
                 jf '-v' 
