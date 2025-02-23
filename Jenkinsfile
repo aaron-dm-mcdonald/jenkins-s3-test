@@ -32,7 +32,7 @@ pipeline {
 
                 withCredentials([string(credentialsId: 'jfrog-creds', variable: 'JFROG_TOKEN')]) {
 
-                    sh "jfrog rt u ./ --target-repo=tf-terraform -u mcdonald.dm.aaron@gmail.com -p $JFROG_TOKEN" 
+                    sh "jf rt u ./ --target-repo=tf-terraform -u mcdonald.dm.aaron@gmail.com -p $JFROG_TOKEN" 
 
                     }
                 // Show the installed version of JFrog CLI.
