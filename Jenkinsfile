@@ -1,8 +1,8 @@
 pipeline {
     agent any
-    tools {
-        jfrog 'jfrog-cli'
-    }
+    // tools {
+    //     jfrog 'jfrog-cli'
+    // }
     environment {
         AWS_REGION = 'us-east-1' 
     }
