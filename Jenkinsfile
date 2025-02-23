@@ -32,9 +32,9 @@ pipeline {
 
                 withCredentials([string(credentialsId: 'jfrog-creds', variable: 'JFROG_TOKEN')]) {
 
-                    sh "jf rt u ./ --target-repo=tf-terraform -u mcdonald.dm.aaron@gmail.com -p $JFROG_TOKEN" 
+                    //sh "jf rt u ./ --target-repo=tf-terraform -u mcdonald.dm.aaron@gmail.com -p $JFROG_TOKEN" 
 
-                    }
+                    
                 // Show the installed version of JFrog CLI.
                 jf '-v' 
 
@@ -46,13 +46,14 @@ pipeline {
 
                 // Create a file and upload it to a repository named 'my-repo' in Artifactory
                 sh 'touch test-file'
-                jf 'rt u test-file tf-terraform/'
+                jf 'rt u test-file tf-terraform/ -u mcdonald.dm.aaron@gmail.com -p $JFROG_TOKEN'
 
                 // Publish the build-info to Artifactory.
                 jf 'rt bp'
 
                 // Download the test-file
-                jf 'rt dl tf-terraform/test-file'
+                jf 'rt dl tf-terraform/test-file -u mcdonald.dm.aaron@gmail.com -p $JFROG_TOKEN'
+                }
             }
         }
     
