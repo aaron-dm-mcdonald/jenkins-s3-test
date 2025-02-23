@@ -47,6 +47,7 @@ pipeline {
                 // Download the test-file
                 jf 'rt dl my-repo/test-file'
             }
+        }
     
         stage('Initialize Terraform') {
             steps {
@@ -62,7 +63,7 @@ pipeline {
                 }
             }
         }
-        
+
         stage('Plan Terraform') {
             steps {
                 withCredentials([[
